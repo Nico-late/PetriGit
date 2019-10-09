@@ -41,7 +41,7 @@ public class Transition {
 		return arcsInput;
 	}
 	
-	public ArrayList<Arc> getArcsSortants(){
+	public ArrayList<Arc> getArcsOutput(){
 		return arcsOutput;
 	}
 }
