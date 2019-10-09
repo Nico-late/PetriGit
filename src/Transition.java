@@ -1,5 +1,9 @@
+import java.util.ArrayList;
 
 public class Transition {
+	
+	private ArrayList arcsEntrants;
+	private ArrayList arcsSortants;
 	
 /*	public boolean enable() {
 		for(int i=0; i<arcsEntrants.size(); i++) {
@@ -24,4 +28,12 @@ public class Transition {
 		}
 	} */
 	
+	public void addArc(Arc arc) {
+		if (arc.getType()== -1) {
+			arcsSortants.add(arc);
+		}
+		else {
+			arcsEntrants.add(arc);
+		}
+	}
 }
