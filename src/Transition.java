@@ -40,4 +40,8 @@ public class Transition {
 	public ArrayList<Arc> getArcsEntrants(){
 		return arcsEntrants;
 	}
+	
+	public ArrayList<Arc> getArcsSortants(){
+		return arcsSortants;
+	}
 }
