@@ -3,14 +3,14 @@ import java.util.ArrayList;
 public class Place {
 	
 	private int token;
-	private ArrayList<Arc> arcsEntrants;
-	private ArrayList<Arc> arcsSortants;
+	private ArrayList<Arc> arcsInput;
+	private ArrayList<Arc> arcsOutput;
 
 	
 	public Place(int Token) {
 		token = Token;
-		arcsEntrants = new ArrayList<Arc>(); 
-		arcsSortants = new ArrayList<Arc>();
+		arcsInput = new ArrayList<Arc>(); 
+		arcsOutput = new ArrayList<Arc>();
 	}
 	
 	public void addToken(int number) {
@@ -32,10 +32,10 @@ public class Place {
 	
 	public void addArc(Arc arc) {
 		if (arc.getType()== -1) {
-			arcsEntrants.add(arc);
+			arcsInput.add(arc);
 		}
 		else {
-			arcsSortants.add(arc);
+			arcsOutput.add(arc);
 		}
 	}
 
