@@ -36,4 +36,8 @@ public class Transition {
 			arcsEntrants.add(arc);
 		}
 	}
+	
+	public ArrayList<Arc> getArcsEntrants(){
+		return arcsEntrants;
+	}
 }
