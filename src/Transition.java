@@ -2,8 +2,8 @@ import java.util.ArrayList;
 
 public class Transition {
 	
-	private ArrayList arcsEntrants;
-	private ArrayList arcsSortants;
+	private ArrayList<Arc> arcsEntrants;
+	private ArrayList<Arc> arcsSortants;
 	
 /*	public boolean enable() {
 		for(int i=0; i<arcsEntrants.size(); i++) {

@@ -3,8 +3,8 @@ import java.util.ArrayList;
 public class Place {
 	
 	private int token;
-	private ArrayList arcsEntrants;
-	private ArrayList arcsSortants;
+	private ArrayList<Arc> arcsEntrants;
+	private ArrayList<Arc> arcsSortants;
 
 	
 	public Place(int Token) {

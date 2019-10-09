@@ -13,12 +13,15 @@ public class Arc {
 	private int type;
 	
 	public Arc(int Weight, Place Place, Transition Transition, int Type) {
-		//if ((Type!=0) && (weight>0)
-		
+		if (((Type!=-1) && (Type!=0) && (Type!=1) && (Type!=2) ) || (weight<0)) {
+			throw new IllegalArgumentException("Input Data are wrong");
+		}
+		else {
 		weight = Weight;
 		place = Place;
 		transition = Transition;
 		type = Type;
+		}
 	}
 	
 	public Place getPlace() {
@@ -31,5 +34,9 @@ public class Arc {
 	
 	public int getType() {
 		return type;
+	}
+	
+	public int getWeight() {
+		return weight;
 	}
 }
