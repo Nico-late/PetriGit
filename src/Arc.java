@@ -39,4 +39,5 @@ public class Arc {
 	public int getWeight() {
 		return weight;
 	}
+	
 }

@@ -5,28 +5,60 @@ public class Transition {
 	private ArrayList<Arc> arcsInput;
 	private ArrayList<Arc> arcsOutput;
 	
-/*	public boolean enable() {
-		for(int i=0; i<arcsEntrants.size(); i++) {
-			if (i.getWeight()>i.getPlace().getToken()) {
-				return false;
+	public Transition() {
+		arcsInput = new ArrayList<Arc>(); 
+		arcsOutput = new ArrayList<Arc>();
+	}
+	
+	// This function checks if the transition can be fired
+	public boolean fireable() {
+		for(int i=0; i<arcsInput.size(); i++) {
+			
+			// We have to make a difference for each type of arc
+			// Zero Arcs
+			if (arcsInput.get(i).getType() ==0) {
+				if (arcsInput.get(i).getPlace().getToken()!=0) { // We can't fire if the place is not empty
+					return false;
+				}
+			}
+			
+			// Empty Edges Arcs
+			if (arcsInput.get(i).getType() ==2) {
+				if (arcsInput.get(i).getPlace().getToken()==0) { // We can't fire if the place is empty
+					return false;
+				}
+			}
+			
+			// Normal Arcs
+			else {			
+				if (arcsInput.get(i).getWeight()>arcsInput.get(i).getPlace().getToken()) { // We can't fire if the place doesnn't have enough tokens
+					return false;
+				}
 			}
 		}
 		return true;
 	}
 	
+	// This function fires the transition (if possible)
 	public void fire() {
-		if (this.enable()) {
-			for(int i=0; i<arcsEntrants.size(); i++) {
-				i.getPLace().delToken(i.getWeight());
+		if (this.fireable()) {
+			for(int i=0; i<arcsInput.size(); i++) {
+				if (arcsInput.get(i).getType()==1) {	// We delete the tokens for the normal Arcs
+					arcsInput.get(i).getPlace().delToken(arcsInput.get(i).getWeight());
+				}
+				if (arcsInput.get(i).getType()==2) {    // We delete all the tokens for the Empty Edges Arcs
+					arcsInput.get(i).getPlace().setToken(0);
+				}
 			}
-			for(int j=0; j<arcsSortants.size(); j++) {
-				j.getPLace().addToken(j.getWeight());
+			
+			for(int j=0; j<arcsOutput.size(); j++) {
+				arcsOutput.get(j).getPlace().addToken(arcsOutput.get(j).getWeight());
 			}
 		}
 		else {
 			throw new IllegalArgumentException("This transition can't be fired");
 		}
-	} */
+	}
 	
 	public void addArc(Arc arc) {
 		if (arc.getType()== -1) {
@@ -36,6 +68,16 @@ public class Transition {
 			arcsInput.add(arc);
 		}
 	}
+	
+	// Function that deletes all the arcs tied to this transition in all the places
+		public void delTransition() {
+			for(int i=0; i<arcsOutput.size(); i++) {
+				arcsOutput.get(i).getPlace().getArcsInput().remove(arcsOutput.get(i));
+			}
+			for(int j=0; j<arcsInput.size(); j++) {
+				arcsInput.get(j).getPlace().getArcsOutput().remove(arcsInput.get(j));
+			}
+		}
 	
 	public ArrayList<Arc> getArcsInput(){
 		return arcsInput;

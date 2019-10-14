@@ -30,6 +30,10 @@ public class Place {
 		}
 	}
 	
+	public void setToken(int number) {
+			this.token = number;
+	}
+	
 	public void addArc(Arc arc) {
 		if (arc.getType()== -1) {
 			arcsInput.add(arc);
@@ -38,5 +42,22 @@ public class Place {
 			arcsOutput.add(arc);
 		}
 	}
-
+	
+	// Function that deletes all the arcs tied to this place in all the transitions
+	public void delPLace() {
+		for(int i=0; i<arcsOutput.size(); i++) {
+			arcsOutput.get(i).getTransition().getArcsInput().remove(arcsOutput.get(i));
+		}
+		for(int j=0; j<arcsInput.size(); j++) {
+			arcsInput.get(j).getTransition().getArcsOutput().remove(arcsInput.get(j));
+		}
+	}
+	
+	public ArrayList<Arc> getArcsInput(){
+		return arcsInput;
+	}
+	
+	public ArrayList<Arc> getArcsOutput(){
+		return arcsOutput;
+	}
 }

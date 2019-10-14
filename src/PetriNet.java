@@ -25,13 +25,15 @@ public class PetriNet {
 	
 	public void delPlace(Place place) {
 		if (placeList.contains(place)) {
-		placeList.remove(place);
+			place.delPLace();
+			placeList.remove(place);
 		}
 	}
 	
 	public void delTransition(Transition transition) {
 		if (transitionList.contains(transition)) {
-		transitionList.remove(transition);
+			transition.delTransition();
+			transitionList.remove(transition);
 		}
 	}
 	
@@ -39,5 +41,61 @@ public class PetriNet {
 		arc.getPlace().addArc(arc);
 		arc.getTransition().addArc(arc);
 
+	}
+	
+	public void delArc(Arc arc) {
+		if (arc.getType()==-1) {
+			arc.getPlace().getArcsInput().remove(arc);
+			arc.getTransition().getArcsOutput().remove(arc);
+		}
+		else {
+			arc.getTransition().getArcsInput().remove(arc);
+			arc.getPlace().getArcsOutput().remove(arc);
+		}
+	}
+	
+	public void fire(Transition transition) {
+		if (transitionList.contains(transition)) {
+			transition.fire();
+		}
+	}
+	
+	public void launch() {
+		ArrayList<Transition> fireableTransition = new ArrayList<Transition>();
+		for(int i=0; i<transitionList.size(); i++) {
+			if (transitionList.get(i).fireable()) {
+				fireableTransition.add(transitionList.get(i));
+			}
+		}
+		while(fireableTransition.size()!=0) {
+			int randomNumber = (int) Math.floor(Math.random() * Math.floor(fireableTransition.size()));
+			fireableTransition.get(randomNumber).fire();
+			fireableTransition.clear();
+			
+			for(int i=0; i<transitionList.size(); i++) {
+				if (transitionList.get(i).fireable()) {
+					fireableTransition.add(transitionList.get(i));
+				}
+			}
+		}
+		
+	}
+	
+	public void addToken(Place place, int number) {
+		if (placeList.contains(place)) {
+			place.addToken(number);
+		}
+	}
+	
+	public void delToken(Place place, int number) {
+		if (placeList.contains(place)) {
+			place.delToken(number);
+		}
+	}
+	
+	public void setToken(Place place, int number) {
+		if (placeList.contains(place)) {
+			place.setToken(number);
+		}
 	}
 }
