@@ -5,6 +5,10 @@ public class Transition {
 	private ArrayList<Arc> arcsInput;
 	private ArrayList<Arc> arcsOutput;
 	
+	/**
+	 * A transition is defined by its outgoing and incoming arcs.
+	 */
+	
 	public Transition() {
 		arcsInput = new ArrayList<Arc>(); 
 		arcsOutput = new ArrayList<Arc>();
