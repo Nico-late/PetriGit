@@ -1,7 +1,7 @@
 public class Main {
 
 	public static void main(String[] args) {
-		PetriNet Petri = new PetriNet();
+		PetriNet petri = new PetriNet();
 		Place p1 = new Place(7);
 		Place p2 = new Place(4);
 		Place p3 = new Place(0);
@@ -19,25 +19,22 @@ public class Main {
 		Arc a6 = new Arc(p3,t3,2);
 		Arc a7 = new Arc(4,p4,t3,-1);
 		
-		Petri.addPlace(p1);
-		Petri.addPlace(p2);
-		Petri.addPlace(p3);
-		Petri.addPlace(p4);
+		petri.addPlace(p1);
+		petri.addPlace(p2);
+		petri.addPlace(p3);
+		petri.addPlace(p4);
 
-		Petri.addTransition(t1);
-		Petri.addTransition(t2);
-		Petri.addTransition(t3);
-		Petri.addArc(a1);
-		Petri.addArc(a2);
-		Petri.addArc(a3);
-		Petri.addArc(a4);
-		Petri.addArc(a5);
-		Petri.addArc(a6);
-		Petri.addArc(a7);
-/*		Petri.fire(t1);
-		Petri.fire(t1);
-		Petri.fire(t2);*/
-		Petri.launch();
+		petri.addTransition(t1);
+		petri.addTransition(t2);
+		petri.addTransition(t3);
+		petri.addArc(a1);
+		petri.addArc(a2);
+		petri.addArc(a3);
+		petri.addArc(a4);
+		petri.addArc(a5);
+		petri.addArc(a6);
+		petri.addArc(a7);
+		petri.launch();
 
 		
 		System.out.println(p1.getToken());
