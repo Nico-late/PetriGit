@@ -1,3 +1,8 @@
+/**
+ * Class main to test the code
+ * @author SCHOLTEN_SCHWEITZER_ROULLIER
+ *
+ */
 public class Main {
 
 	public static void main(String[] args) {

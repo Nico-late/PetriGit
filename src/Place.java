@@ -1,5 +1,10 @@
 import java.util.ArrayList;
 
+/**
+ * Class that defines the places
+ * @author SCHOLTEN_SCHWEITZER_ROULLIER
+ *
+ */
 public class Place {
 	
 	private int token;
@@ -7,8 +12,8 @@ public class Place {
 	private ArrayList<Arc> arcsOutput;
 
 	
-	public Place(int Token) {
-		token = Token;
+	public Place(int token) {
+		this.token = token;
 		arcsInput = new ArrayList<Arc>(); 
 		arcsOutput = new ArrayList<Arc>();
 	}
@@ -44,7 +49,7 @@ public class Place {
 	}
 	
 	// Function that deletes all the arcs tied to this place in all the transitions
-	public void delPLace() {
+	public void delArcPLace() {
 		for(int i=0; i<arcsOutput.size(); i++) {
 			arcsOutput.get(i).getTransition().getArcsInput().remove(arcsOutput.get(i));
 		}

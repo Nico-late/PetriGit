@@ -1,5 +1,10 @@
 import java.util.ArrayList;
 
+/**
+ * Class that defines the transitions
+ * @author SCHOLTEN_SCHWEITZER_ROULLIER
+ *
+ */
 public class Transition {
 	
 	private ArrayList<Arc> arcsInput;
@@ -73,7 +78,7 @@ public class Transition {
 	}
 	
 	// Function that deletes all the arcs tied to this transition in all the places
-		public void delTransition() {
+		public void delArcTransition() {
 			for(int i=0; i<arcsOutput.size(); i++) {
 				arcsOutput.get(i).getPlace().getArcsInput().remove(arcsOutput.get(i));
 			}

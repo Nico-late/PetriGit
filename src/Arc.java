@@ -1,4 +1,8 @@
-
+/**
+ * Class that defines the arcs
+ * @author SCHOLTEN_SCHWEITZER_ROULLIER
+ *
+ */
 public class Arc {
 
 	private int weight;

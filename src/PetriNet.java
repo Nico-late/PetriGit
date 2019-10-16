@@ -1,6 +1,11 @@
 import java.util.ArrayList;
 
-public class PetriNet {
+/**
+ * Class that defines the PetriNet
+ * @author SCHOLTEN_SCHWEITZER_ROULLIER
+ *
+ */
+public class PetriNet implements IPetriNet{
 	
 	private ArrayList<Place> placeList;
 	private ArrayList<Transition> transitionList;
@@ -25,14 +30,14 @@ public class PetriNet {
 	
 	public void delPlace(Place place) {
 		if (placeList.contains(place)) {
-			place.delPLace();
+			place.delArcPLace();
 			placeList.remove(place);
 		}
 	}
 	
 	public void delTransition(Transition transition) {
 		if (transitionList.contains(transition)) {
-			transition.delTransition();
+			transition.delArcTransition();
 			transitionList.remove(transition);
 		}
 	}
