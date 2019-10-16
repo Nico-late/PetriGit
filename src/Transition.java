@@ -10,7 +10,7 @@ public class Transition {
 	 */
 	
 	public Transition() {
-		arcsInput = new ArrayList<Arc>(); 
+		arcsInput = new ArrayList<Arc>();
 		arcsOutput = new ArrayList<Arc>();
 	}
 	
@@ -54,7 +54,6 @@ public class Transition {
 					arcsInput.get(i).getPlace().setToken(0);
 				}
 			}
-			
 			for(int j=0; j<arcsOutput.size(); j++) {
 				arcsOutput.get(j).getPlace().addToken(arcsOutput.get(j).getWeight());
 			}
