@@ -17,7 +17,10 @@ public class Place {
 		arcsInput = new ArrayList<Arc>(); 
 		arcsOutput = new ArrayList<Arc>();
 	}
-	
+	/**
+	 * Add the number of token to the place.
+	 * @param number
+	 */
 	public void addToken(int number) {
 		this.token += number;
 	}
@@ -25,7 +28,11 @@ public class Place {
 	public int getToken() {
 		return this.token;
 	}
-	
+	/**
+	 * Delete the number of token to the place.
+	 * @param number
+	 * @throws WrongInputException
+	 */
 	public void delToken(int number) throws WrongInputException {
 		if (this.getToken()>=number) {
 			this.token -= number;
@@ -35,9 +42,18 @@ public class Place {
 		}
 	}
 	
+	/**
+	 * Set the number of token of a place.
+	 * @param number
+	 */
 	public void setToken(int number) {
 			this.token = number;
 	}
+	
+	/**
+	 * Add an Arc linked to to the place. The if condition is here to check the arc's direction in order to add it in the right list.
+	 * @param arc
+	 */
 	
 	public void addArc(Arc arc) {
 		if (arc.getType()== -1) {

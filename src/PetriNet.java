@@ -27,13 +27,20 @@ public class PetriNet implements IPetriNet{
 	public void addTransition(Transition transition) {
 		transitionList.add(transition);
 	}
-	
+	/**
+	 * If the place is in the list, then it deletes the place and all the arcs linked to it. Else, it does nothing.
+	 */
 	public void delPlace(Place place) {
 		if (placeList.contains(place)) {
 			place.delArcPLace();
 			placeList.remove(place);
 		}
 	}
+	
+	/**
+	 * 	If the transition is in the list, then it deletes the transition and all the arcs linked to it. Else, it does nothing.
+
+	 */
 	
 	public void delTransition(Transition transition) {
 		if (transitionList.contains(transition)) {
@@ -48,6 +55,10 @@ public class PetriNet implements IPetriNet{
 
 	}
 	
+	/**
+	 * Delete the Arc. The condition is here to search the arc in the good list (it depends on the arc's direction)
+	 */
+	
 	public void delArc(Arc arc) {
 		if (arc.getType()==-1) {
 			arc.getPlace().getArcsInput().remove(arc);
@@ -59,11 +70,17 @@ public class PetriNet implements IPetriNet{
 		}
 	}
 	
+	
+	
 	public void fire(Transition transition) throws WrongInputException {
 		if (transitionList.contains(transition)) {
 			transition.fire();
 		}
 	}
+	
+	/**
+	 * Fire all the fireable transitions in a random order.
+	 */
 	
 	public void launch() throws WrongInputException {
 		ArrayList<Transition> fireableTransition = new ArrayList<Transition>();

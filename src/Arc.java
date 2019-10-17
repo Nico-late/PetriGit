@@ -18,6 +18,7 @@ public class Arc {
 	
 	
 	/**
+	 * This builder stands for arcs excluding empty and zero arcs.
 	 * 
 	 * @param Weight corresponds to the amount of tokens that will be moved after firing
 	 * @param Place corresponds to the Place linked to the arc
@@ -36,7 +37,15 @@ public class Arc {
 		type = Type;
 		}
 	}
-	
+	/**
+	 * This builder code for empty and zero arcs. The weight is directly equals to 0 in these cases.
+	 * 
+	 * @param Weight corresponds to the amount of tokens that will be moved after firing
+	 * @param Place corresponds to the Place linked to the arc
+	 * @param Transition corresponds to the Transition linked to the arc
+	 * @param Type provides information about the type of arc
+	 * @throws WrongInputException 
+	 */
 	public Arc(Place Place, Transition Transition, int Type) throws WrongInputException {
 		if (((Type!=0) && (Type!=2))) {
 			throw new WrongInputException();
@@ -64,7 +73,14 @@ public class Arc {
 	public int getWeight() {
 		return weight;
 	}
-	
+
+	/**
+	 * This function is used to set the weight of an Arc. It raises an error if the arc is a zero or an empty arc because their
+	 * weight is set to 0.
+	 * 
+	 * @param weight
+	 * @throws WrongInputException
+	 */
 	public void setWeight(int weight) throws WrongInputException {
 		if ((this.getType()==1) || (this.getType()==-1)) {
 			this.weight=weight;
@@ -73,7 +89,10 @@ public class Arc {
 			throw new WrongInputException();
 		}
 	}
-	
+	/**
+	 * 
+	 * @param type
+	 */
 	public void setType(int type) {
 		if ((type==0) || (type==2)) {
 			this.type=type;
