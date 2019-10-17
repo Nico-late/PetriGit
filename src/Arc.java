@@ -23,10 +23,11 @@ public class Arc {
 	 * @param Place corresponds to the Place linked to the arc
 	 * @param Transition corresponds to the Transition linked to the arc
 	 * @param Type provides information about the type of arc
+	 * @throws WrongInputException 
 	 */
-	public Arc(int Weight, Place Place, Transition Transition, int Type) {
+	public Arc(int Weight, Place Place, Transition Transition, int Type) throws WrongInputException {
 		if (((Type!=-1) && (Type!=1)) || (weight<0)) {
-			throw new IllegalArgumentException("Input Data are wrong");
+			throw new WrongInputException();
 		}
 		else {
 		weight = Weight;
@@ -36,9 +37,9 @@ public class Arc {
 		}
 	}
 	
-	public Arc(Place Place, Transition Transition, int Type) {
+	public Arc(Place Place, Transition Transition, int Type) throws WrongInputException {
 		if (((Type!=0) && (Type!=2))) {
-			throw new IllegalArgumentException("Input Data are wrong");
+			throw new WrongInputException();
 		}
 		else {
 		weight = 0;
@@ -64,4 +65,26 @@ public class Arc {
 		return weight;
 	}
 	
+	public void setWeight(int weight) throws WrongInputException {
+		if ((this.getType()==1) || (this.getType()==-1)) {
+			this.weight=weight;
+		}
+		else {
+			throw new WrongInputException();
+		}
+	}
+	
+	public void setType(int type) {
+		if ((type==0) || (type==2)) {
+			this.type=type;
+			this.weight=0;
+		}
+	}
+	
+	public void setType(int type, int weight) {
+		if ((type==-1) || (type==1)) {
+			this.type=type;
+			this.weight=weight;
+		}
+	}
 }

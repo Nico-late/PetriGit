@@ -44,13 +44,15 @@ public interface IPetriNet {
 	/**
 	 * Fires a transition
 	 * @param transition
+	 * @throws WrongInputException
 	 */
-	void fire(Transition transition);
+	void fire(Transition transition) throws WrongInputException;
 	
 	/**
 	 * Launches the simulation and stops when no transitions can be fired anymore
+	 * @throws WrongInputException
 	 */
-	void launch();
+	void launch() throws WrongInputException;
 	
 	/**
 	 * Adds a number of tokens to a place
@@ -63,8 +65,9 @@ public interface IPetriNet {
 	 * Deletes a number of tokens from a place
 	 * @param place
 	 * @param number
+	 * @throws WrongInputException
 	 */
-	void delToken(Place place, int number);
+	void delToken(Place place, int number) throws WrongInputException;
 	
 	/**
 	 * Sets a place to a number of tokens
@@ -72,4 +75,29 @@ public interface IPetriNet {
 	 * @param number
 	 */
 	void setToken(Place place, int number);
+	
+	/**
+	 * Sets the weight of an arc
+	 * @param arc
+	 * @param weight
+	 * @throws WrongInputException
+	 */
+	void setWeight(Arc arc, int weight) throws WrongInputException;
+	
+	/**
+	 * Sets an arc to a special type (0 or 2)
+	 * @param arc
+	 * @param type
+	 * @throws WrongInputException
+	 */
+	void setType(Arc arc, int type) throws WrongInputException;
+
+	/**
+	 * Sets an arc to a normal type (-1 or 1)
+	 * @param arc
+	 * @param type
+	 * @param weight
+	 * @throws WrongInputException
+	 */
+	void setType(Arc arc, int type, int weight) throws WrongInputException;
 }

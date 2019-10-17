@@ -49,7 +49,7 @@ public class Transition {
 	}
 	
 	// This function fires the transition (if possible)
-	public void fire() {
+	public void fire() throws WrongInputException {
 		if (this.fireable()) {
 			for(int i=0; i<arcsInput.size(); i++) {
 				if (arcsInput.get(i).getType()==1) {	// We delete the tokens for the normal Arcs
@@ -64,7 +64,7 @@ public class Transition {
 			}
 		}
 		else {
-			throw new IllegalArgumentException("This transition can't be fired");
+			throw new WrongInputException();
 		}
 	}
 	

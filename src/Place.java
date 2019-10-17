@@ -26,12 +26,12 @@ public class Place {
 		return this.token;
 	}
 	
-	public void delToken(int number) {
+	public void delToken(int number) throws WrongInputException {
 		if (this.getToken()>=number) {
 			this.token -= number;
 		}
 		else {
-			throw new IllegalArgumentException("You can't delete more tokens than you have.");
+			throw new WrongInputException();
 		}
 	}
 	

@@ -5,7 +5,7 @@
  */
 public class Main {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws WrongInputException {
 		PetriNet petri = new PetriNet();
 		Place p1 = new Place(7);
 		Place p2 = new Place(4);
@@ -39,8 +39,9 @@ public class Main {
 		petri.addArc(a5);
 		petri.addArc(a6);
 		petri.addArc(a7);
+		petri.setWeight(a1, 7);
+		//petri.setType(a1,0);
 		petri.launch();
-
 		
 		System.out.println(p1.getToken());
 		System.out.println(p2.getToken());

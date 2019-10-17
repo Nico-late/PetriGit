@@ -59,13 +59,13 @@ public class PetriNet implements IPetriNet{
 		}
 	}
 	
-	public void fire(Transition transition) {
+	public void fire(Transition transition) throws WrongInputException {
 		if (transitionList.contains(transition)) {
 			transition.fire();
 		}
 	}
 	
-	public void launch() {
+	public void launch() throws WrongInputException {
 		ArrayList<Transition> fireableTransition = new ArrayList<Transition>();
 		for(int i=0; i<transitionList.size(); i++) {
 			if (transitionList.get(i).fireable()) {
@@ -92,7 +92,7 @@ public class PetriNet implements IPetriNet{
 		}
 	}
 	
-	public void delToken(Place place, int number) {
+	public void delToken(Place place, int number) throws WrongInputException {
 		if (placeList.contains(place)) {
 			place.delToken(number);
 		}
@@ -101,6 +101,28 @@ public class PetriNet implements IPetriNet{
 	public void setToken(Place place, int number) {
 		if (placeList.contains(place)) {
 			place.setToken(number);
+		}
+	}
+	
+	public void setWeight(Arc arc,int weight) throws WrongInputException {
+		arc.setWeight(weight);
+	}
+	
+	public void setType(Arc arc, int type) throws WrongInputException {
+		if ((type==0) || (type==2)) {
+			arc.setType(type);
+		}
+		else {
+			throw new WrongInputException();
+		}
+	}
+	
+	public void setType(Arc arc, int type, int weight) throws WrongInputException {
+		if ((type==-1) || (type==1)) {
+			arc.setType(type, weight);
+		}
+		else {
+			throw new WrongInputException();
 		}
 	}
 }
