@@ -27,8 +27,11 @@ public class PetriNet implements IPetriNet{
 	public void addTransition(Transition transition) {
 		transitionList.add(transition);
 	}
+	
 	/**
-	 * If the place is in the list, then it deletes the place and all the arcs linked to it. Else, it does nothing.
+	 * If the place is in the list, then it deletes the place and all the arcs linked to it
+	 * Else, it does nothing.
+	 * @param place
 	 */
 	public void delPlace(Place place) {
 		if (placeList.contains(place)) {
@@ -38,10 +41,10 @@ public class PetriNet implements IPetriNet{
 	}
 	
 	/**
-	 * 	If the transition is in the list, then it deletes the transition and all the arcs linked to it. Else, it does nothing.
-
+	 * If the transition is in the list, then it deletes the transition and all the arcs linked to it.
+	 * Else, it does nothing.
+	 * @param transition
 	 */
-	
 	public void delTransition(Transition transition) {
 		if (transitionList.contains(transition)) {
 			transition.delArcTransition();
@@ -49,6 +52,10 @@ public class PetriNet implements IPetriNet{
 		}
 	}
 	
+	/**
+	 * Function that adds an arc to the place and the transition it is linked to
+	 * @param arc
+	 */
 	public void addArc(Arc arc) {
 		arc.getPlace().addArc(arc);
 		arc.getTransition().addArc(arc);
@@ -56,7 +63,9 @@ public class PetriNet implements IPetriNet{
 	}
 	
 	/**
-	 * Delete the Arc. The condition is here to search the arc in the good list (it depends on the arc's direction)
+	 * Function that deletes an Arc.
+	 * The condition is here to delete the arc in the good list in place an in transition (it depends on the arc's direction)
+	 * @param arc
 	 */
 	
 	public void delArc(Arc arc) {
@@ -71,7 +80,10 @@ public class PetriNet implements IPetriNet{
 	}
 	
 	
-	
+	/**
+	 * Function that fire a specific transition
+	 * @param transition
+	 */
 	public void fire(Transition transition) throws WrongInputException {
 		if (transitionList.contains(transition)) {
 			transition.fire();
@@ -79,7 +91,7 @@ public class PetriNet implements IPetriNet{
 	}
 	
 	/**
-	 * Fire all the fireable transitions in a random order.
+	 * Function that fires all the fireable transitions in a random order until no transition can be fired anymore
 	 */
 	
 	public void launch() throws WrongInputException {
@@ -103,43 +115,69 @@ public class PetriNet implements IPetriNet{
 		
 	}
 	
-	public void addToken(Place place, int number) {
+	/**
+	 * Function that adds a certain amount of tokens to a place
+	 * @param place
+	 * @param number
+	 */
+	public void addToken(Place place, int token) {
 		if (placeList.contains(place)) {
-			place.addToken(number);
+			place.addToken(token);
 		}
 	}
 	
-	public void delToken(Place place, int number) throws WrongInputException {
+	/**
+	 * Function that deletes a certain amount of token from a place if it's possible
+	 * If it's not, an error is raised
+	 * @param place
+	 * @param token
+	 * @throws WrongInputException
+	 */
+	public void delToken(Place place, int token) throws WrongInputException {
 		if (placeList.contains(place)) {
-			place.delToken(number);
+			place.delToken(token);
 		}
 	}
 	
-	public void setToken(Place place, int number) {
+	/**
+	 * Function that sets the amount of tokens from a place to a certain number
+	 * @param place
+	 * @param token
+	 */
+	public void setToken(Place place, int token) {
 		if (placeList.contains(place)) {
-			place.setToken(number);
+			place.setToken(token);
 		}
 	}
 	
+	/**
+	 * Function that sets the weight of an arc to a certain number
+	 * @param arc
+	 * @param weight
+	 * @throws WrongInputException
+	 */
 	public void setWeight(Arc arc,int weight) throws WrongInputException {
 		arc.setWeight(weight);
 	}
 	
+	/**
+	 * This function is used to change the type of an arc to a type which doesn't have weight (Zero or empty arc)
+	 * @param arc
+	 * @param type
+	 * @throws WrongInputException 
+	 */
 	public void setType(Arc arc, int type) throws WrongInputException {
-		if ((type==0) || (type==2)) {
-			arc.setType(type);
-		}
-		else {
-			throw new WrongInputException();
-		}
+		arc.setType(type);
 	}
 	
+	/**
+	 * This function is used to change the type of an arc to a type which has weight (outgoing or incoming arc)
+	 * @param arc
+	 * @param type
+	 * @param weight
+	 * @throws WrongInputException 
+	 */
 	public void setType(Arc arc, int type, int weight) throws WrongInputException {
-		if ((type==-1) || (type==1)) {
-			arc.setType(type, weight);
-		}
-		else {
-			throw new WrongInputException();
-		}
+		arc.setType(type,weight);
 	}
 }

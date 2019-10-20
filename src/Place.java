@@ -11,14 +11,18 @@ public class Place {
 	private ArrayList<Arc> arcsInput;
 	private ArrayList<Arc> arcsOutput;
 
-	
+	/**
+	 * A place is defined by its number of tokens and its outgoing and incoming arcs.
+	 * @param token
+	 */
 	public Place(int token) {
 		this.token = token;
 		arcsInput = new ArrayList<Arc>(); 
 		arcsOutput = new ArrayList<Arc>();
 	}
+	
 	/**
-	 * Add the number of token to the place.
+	 * Adds the number of token to the place.
 	 * @param number
 	 */
 	public void addToken(int number) {
@@ -28,8 +32,9 @@ public class Place {
 	public int getToken() {
 		return this.token;
 	}
+	
 	/**
-	 * Delete the number of token to the place.
+	 * Delete the number of token from the place.
 	 * @param number
 	 * @throws WrongInputException
 	 */
@@ -43,7 +48,7 @@ public class Place {
 	}
 	
 	/**
-	 * Set the number of token of a place.
+	 * Sets the number of token of a place.
 	 * @param number
 	 */
 	public void setToken(int number) {
@@ -51,7 +56,7 @@ public class Place {
 	}
 	
 	/**
-	 * Add an Arc linked to to the place. The if condition is here to check the arc's direction in order to add it in the right list.
+	 * This function adds an arc to the corresponding list of the place (arcInput or arcOutput)
 	 * @param arc
 	 */
 	
@@ -64,7 +69,9 @@ public class Place {
 		}
 	}
 	
-	// Function that deletes all the arcs tied to this place in all the transitions
+	/**
+	 * Function that deletes all the arcs tied to this place in all the transitions
+	 */
 	public void delArcPLace() {
 		for(int i=0; i<arcsOutput.size(); i++) {
 			arcsOutput.get(i).getTransition().getArcsInput().remove(arcsOutput.get(i));

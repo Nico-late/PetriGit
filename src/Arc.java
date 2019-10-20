@@ -37,6 +37,7 @@ public class Arc {
 		type = Type;
 		}
 	}
+	
 	/**
 	 * This builder code for empty and zero arcs. The weight is directly equals to 0 in these cases.
 	 * 
@@ -75,8 +76,8 @@ public class Arc {
 	}
 
 	/**
-	 * This function is used to set the weight of an Arc. It raises an error if the arc is a zero or an empty arc because their
-	 * weight is set to 0.
+	 * This function is used to set the weight of an Arc. It raises an error if the arc 
+	 * is a zero or an empty arc because their weight is set to 0.
 	 * 
 	 * @param weight
 	 * @throws WrongInputException
@@ -89,21 +90,72 @@ public class Arc {
 			throw new WrongInputException();
 		}
 	}
+	
 	/**
-	 * 
+	 * This function is used to change the type of an arc to a type which doesn't have weight (Zero or empty arc)
 	 * @param type
+	 * @throws WrongInputException 
 	 */
-	public void setType(int type) {
+	public void setType(int type) throws WrongInputException {
 		if ((type==0) || (type==2)) {
-			this.type=type;
-			this.weight=0;
+			if (this.getType()==-1) {
+				//If the arc changes direction we have to change the list it's in for the place and the transition
+				this.getPlace().getArcsInput().remove(this);
+				this.getTransition().getArcsOutput().remove(this);
+				this.type=type;
+				this.weight=0;
+				this.getPlace().addArc(this);
+				this.getTransition().addArc(this);
+			}
+			else {
+				this.type=type;
+				this.weight=0;
+			}
+		}
+		else {
+			throw new WrongInputException();
 		}
 	}
 	
-	public void setType(int type, int weight) {
-		if ((type==-1) || (type==1)) {
-			this.type=type;
-			this.weight=weight;
+	/**
+	 * This function is used to change the type of an arc to a type which has weight (outgoing or incoming arc)
+	 * @param type
+	 * @param weight
+	 * @throws WrongInputException 
+	 */
+	public void setType(int type, int weight) throws WrongInputException {
+		if (type==-1) {
+			if (this.getType()==-1) {
+				this.weight=weight;				
+			}
+			//If the arc changes direction we have to change the list it's in for the place and the transition
+			else {
+				this.getPlace().getArcsOutput().remove(this);
+				this.getTransition().getArcsInput().remove(this);
+				this.type=type;
+				this.weight=weight;				
+				this.getPlace().addArc(this);
+				this.getTransition().addArc(this);
+			}
+		}
+		
+		else if (type==1) {
+			//If the arc changes direction we have to change the list it's in for the place and the transition
+			if (this.getType()==-1) {
+				this.getPlace().getArcsInput().remove(this);
+				this.getTransition().getArcsOutput().remove(this);
+				this.type=type;
+				this.weight=weight;				
+				this.getPlace().addArc(this);
+				this.getTransition().addArc(this);
+			}
+			else {
+				this.type=type;
+				this.weight=weight;	
+			}
+		}
+		else {
+			throw new WrongInputException();
 		}
 	}
 }

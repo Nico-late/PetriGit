@@ -12,7 +12,7 @@ public interface IPetriNet {
 	void addPlace(Place place);
 	
 	/**
-	 * Deletes a place to the PetriNet
+	 * Deletes a place from the PetriNet
 	 * @param place
 	 */
 	void delPlace(Place place);
@@ -24,7 +24,7 @@ public interface IPetriNet {
 	void addTransition(Transition transition);
 	
 	/**
-	 * Deletes a transition to the PetriNet
+	 * Deletes a transition from the PetriNet
 	 * @param transition
 	 */
 	void delTransition(Transition transition);
@@ -36,7 +36,7 @@ public interface IPetriNet {
 	void addArc(Arc arc);
 
 	/**
-	 * Deletes a arc to the PetriNet
+	 * Deletes a arc from the PetriNet
 	 * @param place
 	 */
 	void delArc(Arc arc);

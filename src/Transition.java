@@ -13,13 +13,15 @@ public class Transition {
 	/**
 	 * A transition is defined by its outgoing and incoming arcs.
 	 */
-	
 	public Transition() {
 		arcsInput = new ArrayList<Arc>();
 		arcsOutput = new ArrayList<Arc>();
 	}
 	
-	// This function checks if the transition can be fired
+	/**
+	 * This function checks if the transition can be fired
+	 * @return boolean
+	 */
 	public boolean fireable() {
 		for(int i=0; i<arcsInput.size(); i++) {
 			
@@ -48,7 +50,10 @@ public class Transition {
 		return true;
 	}
 	
-	// This function fires the transition (if possible)
+	/**
+	 * This function fires the transition (if possible)
+	 * @throws WrongInputException
+	 */
 	public void fire() throws WrongInputException {
 		if (this.fireable()) {
 			for(int i=0; i<arcsInput.size(); i++) {
@@ -68,6 +73,10 @@ public class Transition {
 		}
 	}
 	
+	/**
+	 * This function adds an arc to the corresponding list of the transition (arcInput or arcOutput)
+	 * @param arc
+	 */
 	public void addArc(Arc arc) {
 		if (arc.getType()== -1) {
 			arcsOutput.add(arc);
@@ -77,7 +86,9 @@ public class Transition {
 		}
 	}
 	
-	// Function that deletes all the arcs tied to this transition in all the places
+	/**
+	 *  Function that deletes all the arcs tied to this transition in all the places
+	 */
 		public void delArcTransition() {
 			for(int i=0; i<arcsOutput.size(); i++) {
 				arcsOutput.get(i).getPlace().getArcsInput().remove(arcsOutput.get(i));
