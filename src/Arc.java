@@ -83,7 +83,7 @@ public class Arc {
 	 * @throws WrongInputException
 	 */
 	public void setWeight(int weight) throws WrongInputException {
-		if (weight >= 0) {
+		if (weight <= 0) {
 			throw new WrongInputException();
 
 		}
