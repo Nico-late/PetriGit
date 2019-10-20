@@ -22,11 +22,13 @@ public class Place {
 	}
 	
 	/**
-	 * Adds the number of token to the place.
+	 * Adds the number of token to the place if it is positive. Else, it does nothing
 	 * @param number
 	 */
 	public void addToken(int number) {
-		this.token += number;
+		if (number >= 0) {
+			this.token += number;
+		}
 	}
 	
 	public int getToken() {
@@ -51,8 +53,10 @@ public class Place {
 	 * Sets the number of token of a place.
 	 * @param number
 	 */
-	public void setToken(int number) {
+	public void setToken(int number){
+		if (number >= 0) {
 			this.token = number;
+		}
 	}
 	
 	/**

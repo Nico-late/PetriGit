@@ -70,12 +70,18 @@ public class PetriNet implements IPetriNet{
 	
 	public void delArc(Arc arc) {
 		if (arc.getType()==-1) {
-			arc.getPlace().getArcsInput().remove(arc);
-			arc.getTransition().getArcsOutput().remove(arc);
+			if(arc.getPlace().getArcsInput().contains(arc) & arc.getTransition().getArcsOutput().contains(arc)) {
+				arc.getPlace().getArcsInput().remove(arc);
+				arc.getTransition().getArcsOutput().remove(arc);
+			}
+			
 		}
 		else {
-			arc.getTransition().getArcsInput().remove(arc);
-			arc.getPlace().getArcsOutput().remove(arc);
+			if(arc.getTransition().getArcsInput().contains(arc) & arc.getPlace().getArcsOutput().remove(arc)) {
+				arc.getTransition().getArcsInput().remove(arc);
+				arc.getPlace().getArcsOutput().remove(arc);
+			}
+			
 		}
 	}
 	
@@ -85,7 +91,7 @@ public class PetriNet implements IPetriNet{
 	 * @param transition
 	 */
 	public void fire(Transition transition) throws WrongInputException {
-		if (transitionList.contains(transition)) {
+		if (transitionList.contains(transition) & transition.fireable()) {
 			transition.fire();
 		}
 	}
@@ -119,6 +125,7 @@ public class PetriNet implements IPetriNet{
 	 * Function that adds a certain amount of tokens to a place
 	 * @param place
 	 * @param number
+	 * @throws WrongInputException 
 	 */
 	public void addToken(Place place, int token) {
 		if (placeList.contains(place)) {

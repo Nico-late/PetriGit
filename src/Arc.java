@@ -83,7 +83,11 @@ public class Arc {
 	 * @throws WrongInputException
 	 */
 	public void setWeight(int weight) throws WrongInputException {
-		if ((this.getType()==1) || (this.getType()==-1)) {
+		if (weight >= 0) {
+			throw new WrongInputException();
+
+		}
+		else if ((this.getType()==1) || (this.getType()==-1)) {
 			this.weight=weight;
 		}
 		else {
