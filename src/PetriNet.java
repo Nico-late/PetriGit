@@ -127,7 +127,7 @@ public class PetriNet implements IPetriNet{
 	 * @param number
 	 * @throws WrongInputException 
 	 */
-	public void addToken(Place place, int token) {
+	public void addToken(Place place, int token) throws WrongInputException {
 		if (placeList.contains(place)) {
 			place.addToken(token);
 		}
@@ -150,8 +150,9 @@ public class PetriNet implements IPetriNet{
 	 * Function that sets the amount of tokens from a place to a certain number
 	 * @param place
 	 * @param token
+	 * @throws WrongInputException 
 	 */
-	public void setToken(Place place, int token) {
+	public void setToken(Place place, int token) throws WrongInputException {
 		if (placeList.contains(place)) {
 			place.setToken(token);
 		}

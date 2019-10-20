@@ -58,8 +58,9 @@ public interface IPetriNet {
 	 * Adds a number of tokens to a place
 	 * @param place
 	 * @param number
+	 * @throws WrongInputException
 	 */
-	void addToken(Place place, int number);
+	void addToken(Place place, int number) throws WrongInputException;
 	
 	/**
 	 * Deletes a number of tokens from a place
@@ -73,8 +74,9 @@ public interface IPetriNet {
 	 * Sets a place to a number of tokens
 	 * @param place
 	 * @param number
+	 * @throws WrongInputException
 	 */
-	void setToken(Place place, int number);
+	void setToken(Place place, int number) throws WrongInputException;
 	
 	/**
 	 * Sets the weight of an arc

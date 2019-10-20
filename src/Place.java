@@ -24,10 +24,14 @@ public class Place {
 	/**
 	 * Adds the number of token to the place if it is positive. Else, it does nothing
 	 * @param number
+	 * @throws WrongInputException 
 	 */
-	public void addToken(int number) {
+	public void addToken(int number) throws WrongInputException {
 		if (number >= 0) {
 			this.token += number;
+		}
+		else {
+			throw new WrongInputException();
 		}
 	}
 	
@@ -52,10 +56,14 @@ public class Place {
 	/**
 	 * Sets the number of token of a place.
 	 * @param number
+	 * @throws WrongInputException 
 	 */
-	public void setToken(int number){
+	public void setToken(int number) throws WrongInputException{
 		if (number >= 0) {
 			this.token = number;
+		}
+		else {
+			throw new WrongInputException();
 		}
 	}
 	
