@@ -1,0 +1,13 @@
+---- PetriNet creator -----
+Authors: SCHOLTEN_SCHWEITZER_ROULLIER
+
+
+LAUNCH:
+To launch the code, import the project in your java workspace, add the elements and the functions you want in the main class and launch it.
+
+The arguments needed to create new elements in the PetriNet (the arcs, the places and the transitions) are at the beginning of each one of these classes.
+Every function that can be used is detailed in the interface IPetriNet.
+
+
+TEST:
+To test the code, launch the tests class.
